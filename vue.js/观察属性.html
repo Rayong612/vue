@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>观察属性</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="myThing">
+        <p>美国新发明的圆珠笔定价为{{price}}美元，含税价为{{priceInTax}}美元，折合人民币为{{priceChinaRMB}}元。</p>
+        <!-- 记得@click后引号要加 -->
+        <button @click = "btnClick(10)">加价10元</button>
+    </div>
+    <script>
+        var mything = new Vue({
+            el:'#myThing',
+            data:{
+                price:0,
+                priceInTax:0,
+                priceChinaRMB:0
+            },
+            watch:{
+                // 一旦price发现改变，即调动函数
+                price:function(newVal,oldval){
+                    console.log(newVal,oldval);
+                    this.priceInTax = Math.round(this.price *1.05);
+                    this.priceChinaRMB = Math.round(this.priceInTax *7);
+                }
+            },
+            methods: {
+                btnClick:function(newVal){
+                    this.price += newVal;
+                }
+            },
+        });
+        // 因为起始值price为零，所以刚开始时得给price赋值。
+        mything.price = 15;
+    </script>
+</body>
+</html>

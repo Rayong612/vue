@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算属性</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="myThing">
+        美国新发明的圆珠笔定价为{{price}}美元，含税价为{{priceInTax}}美元，折合人民币为{{priceChinaRMB}}元。
+    </div>
+    <script>    
+        var mything = new Vue({
+            el:'#myThing',
+            data:{
+                price:15
+            },
+            computed: {
+                priceInTax:function(){
+                    return this.price * 1.06;
+                },
+                priceChinaRMB:function(){
+                    return Math.round(this.priceInTax *7); 
+                }
+            },
+        });
+    </script>
+</body>
+</html>

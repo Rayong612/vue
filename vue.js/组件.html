@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="myThing">
+        <ol>
+            <!-- 用自己定义好的game-item组件，通过v-for循环games获取的值分别给item，再将item赋给game -->
+            <game-item v-for="item in games" v-bind:game="item"></game-item>
+        </ol>
+    </div>
+    <script>
+    //定义组件，game-item
+    Vue.component('game-item',{
+        props: ['game'],
+        // 组件的模板定义
+        template:'<li>{{game.title}}<li>'
+    });
+
+    //Vue对象实例化
+    var  mything = new Vue({
+        el:'#myThing',
+        data:{
+            games:[
+                // 注意：
+                { title :'斗地主'},
+                { title :'打麻将'},
+                { title :'扫雷'},
+                { title :'贪吃蛇'}
+            ]
+        }
+    });
+    </script>
+</body>
+</html>
