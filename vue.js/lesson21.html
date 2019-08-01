@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单下拉框</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="myThing">
+        <h1>海贼王里你最喜欢的人物是：</h1>
+        <select v-model="likePeo" style="width: 100px;">
+            <option>路飞</option>
+            <option>索隆</option>
+            <option>乌索普</option>
+            <option>娜美</option>
+            <option>乔巴</option>
+            <option>罗宾</option>
+            <option>布鲁克</option>
+            <option>甚平</option>
+        </select>
+
+        <h1>你喜欢的海贼王人物有：</h1>
+        <!-- multiple表示为下拉框多选 -->
+        <select v-model="likesPeos" multiple style="width: 150px;height: 180px;">
+                <option>路飞</option>
+                <option>索隆</option>
+                <option>乌索普</option>
+                <option>娜美</option>
+                <option>乔巴</option>
+                <option>罗宾</option>
+                <option>弗兰奇</option>
+                <option>布鲁克</option>
+                <option>甚平</option>
+        </select>
+
+        <h1>选择结果</h1>
+        <p>我最喜欢的人物是：{{ likePeo}}</p>
+        <p>我喜欢的人物有：{{likesPeos}}</p>
+    </div>
+
+    <script>
+        var mything = new Vue({
+            el:'#myThing',
+            data:{
+                likePeo:null,
+                likesPeos:[]
+            }
+        });
+    </script>
+</body>
+</html>

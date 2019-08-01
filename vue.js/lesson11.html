@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>class绑定</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .box{
+            color: red;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="myThing">
+        <div v-bind:class="{box:Box}">文本一</div>
+        <!-- :class和v-bind:class同样效果 -->
+        <div :class="{box:Box}">文本二</div>
+        <!-- @click后的引号必须是双引号 -->
+        <button @click="btnClick">改变class</button>
+    </div>
+    <script>
+        var mything = new Vue({
+            el:'#myThing',
+            data:{
+                Box:true,
+            },
+            methods: {
+                btnClick:function(){
+                    this.Box = !this.Box;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>按钮事件</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+        <div id="myThing">
+                <p>我喜欢的吃的：{{food}}</p>
+                <button v-on:click = "btnClick('榴莲')">榴莲</button>
+                <button v-on:click = "btnClick('火龙果')">火龙果</button>
+                <button v-on:click = "btnClick('烤鸭')">烤鸭</button>
+                <button @click = "btnClick('三明治')">三明治</button>
+                <!-- v-on:缩写成@ -->
+            </div>
+            <script>
+                var mything = new Vue({
+                    el:"#myThing",
+                    data:{
+                        food:'香肠'
+                    },      
+                    methods:{
+                        btnClick:function(pname){
+                            this.food = pname;
+                        }
+                    }
+                });
+            </script>
+</body>
+</html>
+
+

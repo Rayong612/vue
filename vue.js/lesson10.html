@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>设定计算属性</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="myThing">
+            <p>美国新发明的圆珠笔定价为{{price}}美元，含税价为{{priceInTax}}美元，折合人民币为{{priceChinaRMB}}元。</p>
+            <!-- 记得@click后引号要加 -->
+            <button @click = "btnClick(20000)">含税价改成20000元</button>
+    </div>
+    <script>
+        var mything = new Vue({
+            el:'#myThing',
+            data:{
+                price:15   
+            },
+            computed: {
+                priceInTax:{
+                    get:function(){
+                        return this.price*1.05;
+                    },
+                    set:function(newTax){
+                      this.price = newTax/1.05;
+                       
+                    }
+                },
+                priceChinaRMB:function () {
+                    return Math.round(this.priceInTax*7);
+                }
+            },
+            methods: {
+                btnClick:function(newPrice){
+                    this.priceInTax = newPrice;
+                }
+            }
+            
+        });
+    </script>
+</body>
+</html>

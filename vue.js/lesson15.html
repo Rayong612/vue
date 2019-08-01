@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>列表渲染</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="myThing">
+        <ul>
+            <!-- 这里是用（） -->
+            <li v-for="(game,index) in games">
+                ({{index+1}}){{game.title}}/出售价：{{game.price}}元
+            </li>
+        </ul>
+    </div>
+    <script>
+        var mything = new Vue({
+            el:'#myThing',
+            data:{
+                games:[
+                    {title:"魂斗罗",price:300},
+                    {title:"魂斗罗2",price:200},
+                    {title:"魂斗罗3",price:100}
+                ]
+            }
+        });
+    </script>
+</body>
+</html>
