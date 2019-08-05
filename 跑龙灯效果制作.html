@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>跑龙灯效果制作</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="myThing">   
+        <input type="button" value="浪起来" @click="lang" />
+        <input type="button" value="稳住" @click="stop"/>
+        <!-- //利用插值方法 -->
+        <h3>{{ msg }}</h3>
+    </div>
+    <script>    
+        var vm = new Vue({
+            el:'#myThing',
+            data:{
+                msg:'猥琐发育，别浪---，稳住',   
+                // 获取定时器的名字
+                timer:null
+                     
+            },
+            methods: {
+                // 这里也可以写成lang（）{
+                lang:function(){
+                    // console.log(this.msg);
+                    
+
+                    // 利用if语句判断定时器刚开始状态，如果是null，则表示第一次点击启动，以防多次创建定时器，导致停不下来。
+                    if(this.timer!=null)return;
+                    
+                    // 用定时器的时候，this指向不同，需要在外面定义一个变量保存this指向。 var _this = this;
+                    // 或者把定时器中函数改成一个建造函数，将function去掉，在小括号后面加一个箭头=>，这是es6的语法,
+                    // =>解决了this指向问题
+                    this.timer = setInterval( () => {
+                        // 截取第一个字符
+                        var start = this.msg.substring(0,1);
+                        // 截取从第二个开始的字符
+                        var end = this.msg.substring(1);
+                        // 拼接字符，实现跑龙灯效果
+                        this.msg = end + start;
+                    },400)
+                },
+                
+                stop:function(){
+                    clearInterval(this.timer);
+                    // 关闭定时器后，给定时器赋值为null，以保下一次定时器的开启
+                    this.timer = null;
+                }
+            }
+           
+        });
+    </script>
+</body>
+</html>
