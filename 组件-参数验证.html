@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件-参数验证</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="myThing">
+        <h1>身世之谜</h1>
+        <show-info name="Rayong" :age="21" ></show-info>
+    </div>
+
+    <script>
+        Vue.component('show-info',{
+            props: {
+                name:{
+                    type:String,
+                    required:true
+                },
+                age:{
+                    type:Number,
+                    validator:function(value){
+                        return value >= 0 && value <=130;
+                    }
+                },
+                detail:{
+                    type:Object,
+                    default:function(){
+                        return {
+                            address:'China',
+                            language:'汉语'
+                        }
+                    }
+                }
+            },
+
+            template:'<div>姓名：{{this.name}}<br/>'
+                    + '年龄：{{this.age}}岁<br/>'
+                    + '地址：{{this.detail.address}}<br/>'
+                    + '语言：{{this.detail.language}}</div>'
+        });
+
+        var mything = new Vue({
+            el:'#myThing'
+        });
+    </script>
+</body>
+</html>

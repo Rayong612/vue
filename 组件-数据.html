@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件-数据</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="myThing">   
+        <div>今天的天气是：<today-weather></today-weather></div>
+    </div>
+
+    <script>
+        Vue.component('today-weather',{
+            template:'<strong>{{todayWeather}}</strong>',
+            // data:{
+            //     todayWeather:'大晴天'
+            // }
+
+            // 备注：为vue.js组件添加数据，使组件可以动态显示各种数据，注意是数据函数，不是数据属性。 
+            data:function(){
+                return {
+                    todayWeather:'大晴天'
+                }
+            }
+        });
+
+        var mything = new Vue({
+            el:'#myThing'
+        });
+    </script>
+</body>
+</html>

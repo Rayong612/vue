@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件-组合slot</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="myThing">
+        <hzw-people l="路飞" s="索隆">
+            <span slot="sz">山治</span>
+            <span slot="n">娜美</span>
+            <span slot="lb">罗宾</span>
+            <span slot="w">乌索普</span>
+            <span slot="f">弗兰奇</span>
+            <span slot="q">乔巴</span>
+            <span slot="b">布鲁克</span>
+        </hzw-people>
+    </div>
+    <script>    
+        Vue.component('hzw-people',{
+            props: ['l','s'],
+            template:'<div>'
+                    +'<div>男主1：{{l}}</div>'
+                    +'<div>男主2：{{s}}</div>'
+                    +'<div>男主3：<slot name="sz"></slot></div>'
+                    +'<div>男主4：<slot name="w"></slot></div>'
+                    +'<div>男主5：<slot name="q"></slot></div>'
+                    +'<div>男主6：<slot name="f"></slot></div>'
+                    +'<div>男主7：<slot name="b"></slot></div>'
+                    +'<div>女主1：<slot name="n"></slot></div>'
+                    +'<div>女主2：<slot name="lb"></slot></div>'
+                    +'</div>'
+        });
+
+        var mything = new Vue({
+            el:'#myThing'
+        });
+    </script>
+</body>
+</html>

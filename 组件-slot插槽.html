@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件-slot插槽</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <!-- slot是父组件与子组件的通讯方式，可以将父组件的内容显示在子组件当中 -->
+    <div id="myThing">
+        <say-to pname="Rayong">你做的不行。</say-to>
+        <say-to pname="Rayong1">你做的也不行。</say-to>
+        <say-to pname="Rayong2">你做的更不行。</say-to>         
+    </div>
+
+    <script>    
+        Vue.component('say-to',{
+            props: ['pname'],
+            // 要想获取组件中的内容，需要slot插槽插入
+            template:'<div>'
+                    +'你好，<strong>{{pname}}</strong>!'
+                    +'<slot></slot>'
+                    +'</div>'
+        });
+
+        var mything = new Vue({
+            el:'#myThing'
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件-事件传递</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+    <!-- v:on监听事件，$emit是提交事件，触发事件，并将数据提交给事件监听者 -->
+    <div id="myThing">
+        <h1>加法</h1>
+        <!-- 子组件add-method通过v-on：监听子组件方法，会调用父组件的getAddResult。 -->
+        <add-method :a="6" :b="12" v-on:add_event="getAddResult"></add-method>
+        <hr/>
+        <h3>{{result}}</h3>
+    </div>
+    
+    <script>    
+        Vue.component('add-method',{
+            props: ['a','b'],
+            template:'<div><button v-on:click="add">加吧</button></div>',
+            methods: {
+                add:function(){
+                    var value = 0;
+                    value = this.a + this.b;
+                    // 子组件触发事件，add_event提交给父组件
+                    this.$emit('add_event',{
+                        result:value
+                    })
+                }
+            }
+        });
+
+        var mything = new Vue({
+            el:'#myThing',
+            data:{
+                result:0
+            },
+            methods:{
+                // pval是子组件中通过$emit接收到的数据作为参数传递给父组件
+                getAddResult:function(pval){
+                    this.result = pval.result;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

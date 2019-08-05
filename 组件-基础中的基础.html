@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件-基础中的基础</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="myThing">
+        <today-weather></today-weather>
+    </div>
+
+    <script>
+        Vue.component('today-weather',{
+            template:'<div>今天出太阳，可以学习一下vue</div>'
+        });
+        var mything = new Vue({
+            el:'#myThing'
+        });
+    </script>
+</body>
+</html>

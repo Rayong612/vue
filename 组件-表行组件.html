@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件-表行组件</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="myThing">
+        <h1> 你喜欢的动漫是：</h1>
+        <table border="1">
+            <tr>
+                <td>编号</td>
+                <td>动漫名称</td>
+            </tr>
+
+            <!-- 备注：要是要在表格渲染，要用is，不然就是在HTML中渲染 -->
+            <tr is="my-row1"></tr>
+            <tr is="my-row2"></tr>
+            <tr is="my-row3"></tr>
+
+            <!-- <my-row1></my-row1>
+            <my-row2></my-row2>
+            <my-row3></my-row3> -->
+        </table>
+    </div>
+
+    <script>
+        Vue.component('my-row1',{
+            template:'<tr><td>1</td><td>海贼王</td></tr>'
+        });
+        Vue.component('my-row2',{
+            template:'<tr><td>2</td><td>东京喰种</td></tr>'
+        });
+        Vue.component('my-row3',{
+            template:'<tr><td>3</td><td>画江湖之不良人</td></tr>'
+        });
+        var mything = new Vue({
+            el:'#myThing',
+            data:{},
+            methods:{}
+        });
+    </script>
+
+
+
+
+</body>
+</html>

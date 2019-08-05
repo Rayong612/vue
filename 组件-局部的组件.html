@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件-局部的组件</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="myThing">
+        <my-weather></my-weather>
+    </div>
+
+    <script>
+        var weatherCompoent = {
+            template:'<div>每天学习一点点</div>'
+        };
+        var mything = new Vue({
+            el:'#myThing',
+            data:{ 
+            },
+            components:{
+                'my-weather':weatherCompoent
+            }
+           
+        });
+    </script>
+</body>
+</html>
